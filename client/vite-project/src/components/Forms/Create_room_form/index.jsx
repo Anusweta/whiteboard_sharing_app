@@ -26,6 +26,12 @@ const CreateRoom = ({uuid, socket, setUser}) => {
     socket.emit("userJoined", roomData)
 
   }
+   const handleCopyRoomId = () => {
+    navigator.clipboard.writeText(roomId).then(() => {
+      alert("Room ID copied to clipboard!");
+    });
+  };
+
 
     return(
         <form className="form col-md-11 mt-5">
@@ -45,10 +51,14 @@ const CreateRoom = ({uuid, socket, setUser}) => {
          onClick={() => setRoomId(uuid())}>
             generate
          </button>
-         <button className="btn btn-outline-danger btn-sm me-2" type="button">
-                copy
-         </button>
-           </div>
+         <button
+              className="btn btn-outline-danger btn-sm me-2"
+              type="button"
+              onClick={handleCopyRoomId}
+            >
+              copy
+            </button>
+             </div>
            </div>
            </div>
 
